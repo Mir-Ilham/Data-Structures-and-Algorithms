@@ -56,6 +56,13 @@ int main() {
         cin >> target;
 
         cout << binarySearch(arr, target) << endl;
+
+        /*
+            STL binary search algorithm returns true if target exists
+            in array else false
+
+            binary_search(arr.begin(), arr.end(), target);
+        */
     }
 
     return 0;
