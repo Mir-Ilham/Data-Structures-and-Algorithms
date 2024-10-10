@@ -4,6 +4,9 @@ using namespace std;
 #define file() freopen("input.txt","r",stdin);freopen("output.txt","w",stdout);
 
 int binarySearch(vector<int> &arr, int target) {
+    // Time Complexity: O(logN)
+    // Space Complexity: O(1)
+
     int l = 0, r = arr.size() - 1;
 
     while (r - l > 1) {
@@ -35,10 +38,6 @@ int main() {
         Constraints:
         1 <= N <= 1e5
         1 <= Q <= 1e5
-
-        Time Complexity: O(logN)
-
-        Space Complexity: O(1)
     */
 
     int n;
