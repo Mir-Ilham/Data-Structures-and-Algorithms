@@ -1,0 +1,2 @@
+Size: 5
+Linked list: 1 2 3 4 5 
