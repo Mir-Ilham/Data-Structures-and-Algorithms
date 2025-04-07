@@ -44,9 +44,24 @@ void traverseLinkedList(Node* head) {
     cout << endl;
 }
 
+// Reverse
+Node* reverseDoublyLinkedList(Node* head) {
+    Node* back = NULL;
+    Node* temp = head;
+
+    while (temp != NULL) {
+        back = temp->prev;
+        temp->prev = temp->next;
+        temp->next = back;
+        temp = temp->prev;
+    }
+
+    return back->prev;
+}
+
 // Insert
 Node* insertBeforeHead(Node* head, int val) {
-    Node * newHead = new Node(val, nullptr, head);
+    Node* newHead = new Node(val, nullptr, head);
     head->prev = newHead;
     
     return newHead;
@@ -195,6 +210,10 @@ int main() {
 
         Node* removeKthElement(Node* head, int k)
         // Remove the kth element from the doubly linked list
+
+        ---------- Reverse ----------
+        Node* reverseDoublyLinkedList(Node* head)
+        // Reverse the doubly linked list
     */
 
     int n;
