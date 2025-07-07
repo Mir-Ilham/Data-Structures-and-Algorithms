@@ -1,2 +1,1 @@
 Inorder traversal of BST: 0 1 4 6 9 12 
-1

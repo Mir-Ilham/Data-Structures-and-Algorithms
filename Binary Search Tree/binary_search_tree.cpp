@@ -70,6 +70,50 @@ Node* search(Node* head, int val) {
     return head;
 }
 
+Node* deleteNodeUtil(Node* head) {
+    if (head->left == NULL)
+        return head->right;
+    
+    if (head->right == NULL)
+        return head->left;
+
+    Node* leftChild = head->left;
+    Node* leftMostInRightTree = head->right;
+    while (leftMostInRightTree->left != NULL)
+        leftMostInRightTree = leftMostInRightTree->left;
+    leftMostInRightTree->left = leftChild;
+    return head->right;
+}
+
+Node* deleteNode(Node* head, int val) {
+    if (head == NULL)
+        return NULL;
+    
+    if (head->data == val)
+        return deleteNodeUtil(head);
+
+    Node* temp = head;
+    while (temp != NULL) {
+        if (temp->data > val) {
+            if (temp->left != NULL and temp->left->data == val) {
+                temp->left = deleteNodeUtil(temp->left);
+                break;
+            } else {
+                temp = temp->left;
+            }
+        } else {
+            if (temp->right != NULL and temp->right->data == val) {
+                temp->right = deleteNodeUtil(temp->right);
+                break;
+            } else {
+                temp = temp->right;
+            }
+        }
+    }
+
+    return head;
+}
+
 int main() {
     file();
 
@@ -102,11 +146,15 @@ int main() {
         // Search in a BST, return the Node that matches val else return NULL
 
         ---------- Delete ----------
+        Node* delete(Node* head, int val)
+        // Delete node with the given value if it exists in the BST
     */
 
     Node* head = NULL;
     vector<int> arr = {6, 9, 1, 0, 12, 4};
     head = buildBST(arr);
+
+    // head = deleteNode(head, 4);
 
     cout << "Inorder traversal of BST: ";
     inorder(head);
