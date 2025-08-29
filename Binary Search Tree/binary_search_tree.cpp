@@ -125,6 +125,7 @@ int main() {
             2. Build a Binary Search Tree from an array
             3. Traverse the BST
             4. Search for an element in the BST
+            5. Delete a node if it exists in the BST
     */
 
     /*
