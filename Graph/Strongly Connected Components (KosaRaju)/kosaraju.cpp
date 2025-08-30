@@ -37,8 +37,9 @@ int main() {
         represents the edges of the i-th node (zero indexed). The lines start with the edge count
         followed by the destination node values.
 
-        Constraints:
-
+        Complexity analysis:
+        TC - O(V + E)
+        SC - O(V + E) + O(V)
     */
     int n;
     cin >> n;
