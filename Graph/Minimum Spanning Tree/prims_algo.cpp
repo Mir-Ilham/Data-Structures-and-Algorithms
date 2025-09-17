@@ -20,7 +20,7 @@ int main() {
 
         Complexity analysis:
         TC: O(ElogE)
-        SC: O(E)
+        SC: O(E) + O(V)
 
     */
 
