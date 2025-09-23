@@ -1,0 +1,8 @@
+7
+1 apple
+1 app
+2 apps
+2 apple
+3 apps
+1 apxl
+3 apx
