@@ -52,11 +52,72 @@ public:
     }
 };
 
+class Node {
+public:
+    Node* next;
+    int data;
+
+    Node(int data) {
+        this->data = data;
+        this->next = nullptr;
+    }
+
+    Node(int data, Node* next) {
+        this->data = data;
+        this->next = next;
+    }
+};
+
+class LinkedListQueue {
+private:
+    Node* start;
+    Node* end;
+    int size;
+public:
+    LinkedListQueue() {
+        this->start = nullptr;
+        this->end = nullptr;
+        this->size = 0;
+    }
+
+    void Push(int x) {
+        if (start == NULL) {
+            start = end = new Node(x);
+        } else {
+            end->next = new Node(x);
+            end = end->next;
+        }
+        size++;
+    }
+
+    int Pop() {
+        if (start == NULL) return -1;
+
+        Node* temp = start;
+        int el = temp->data;
+        start = start->next;
+        if (start == NULL)
+            end = NULL;
+        delete temp;
+        size--;
+        return el;
+    }
+
+    int Front() {
+        if (start == NULL) return -1;
+        return start->data;
+    }
+
+    int Size() {
+        return size;
+    }
+};
+
 int main() {
     file();
 
     /*
-        Queue Implementation using array (Fixed max size).
+        Queue Implementation using array and linked list.
 
         Stack function implementations:
         1) Push
@@ -64,26 +125,39 @@ int main() {
         3) Front
         4) Size
     */
-    ArrayQueue aq(5);
-    aq.Push(1);
-    aq.Push(2);
-    aq.Push(3);
-    aq.Push(4);
-    aq.Push(5);
-    aq.Push(6);
 
-    cout << aq.Front() << endl;
-    cout << aq.Pop() << endl;
-    cout << aq.Pop() << endl;
-    cout << aq.Pop() << endl;
-    cout << aq.Pop() << endl;
-    cout << aq.Pop() << endl;
-    cout << aq.Pop() << endl;
+    // ArrayQueue aq(5);
+    // aq.Push(1);
+    // aq.Push(2);
+    // aq.Push(3);
+    // aq.Push(4);
+    // aq.Push(5);
+    // aq.Push(6);
 
-    cout << aq.Size() << endl;
+    // cout << aq.Front() << endl;
+    // cout << aq.Pop() << endl;
+    // cout << aq.Pop() << endl;
+    // cout << aq.Pop() << endl;
+    // cout << aq.Pop() << endl;
+    // cout << aq.Pop() << endl;
+    // cout << aq.Pop() << endl;
 
-    aq.Push(101);
-    cout << aq.Front() << endl;
+    // cout << aq.Size() << endl;
+
+    // aq.Push(101);
+    // cout << aq.Front() << endl;
+
+    LinkedListQueue lq;
+    lq.Push(10);
+    lq.Push(15);
+    lq.Push(19);
+
+    cout << lq.Pop() << endl;
+    cout << lq.Front() << endl;
+    cout << lq.Size() << endl;
+    cout << lq.Pop() << endl;
+    cout << lq.Pop() << endl;
+    cout << lq.Pop() << endl;
 
 
     return 0;
