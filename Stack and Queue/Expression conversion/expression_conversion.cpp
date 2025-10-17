@@ -83,15 +83,59 @@ string infixToPrefix(string infix) {
     return prefix;
 }
 
+string postfixToInfix(string postfix) {
+    stack<string> st;
+
+    for (char c : postfix) {
+        if (isChar(c)) {
+            st.push(string(1, c));
+        } else {
+            string exp2 = st.top();
+            st.pop();
+            string exp1 = st.top();
+            st.pop();
+            exp1 = '(' + exp1 + c + exp2 + ')';
+            st.push(exp1);
+        }
+    }
+    return st.top();
+}
+
+string prefixToInfix(string prefix) {
+    stack<string> st;
+
+    for (int i = prefix.size() - 1; i >= 0; i--) {
+        char c = prefix[i];
+
+        if (isChar(c)) {
+            st.push(string(1, c));
+        } else {
+            string exp1 = st.top();
+            st.pop();
+            string exp2 = st.top();
+            st.pop();
+            exp1 = '(' + exp1 + c + exp2 + ')';
+            st.push(exp1);
+        }
+    }
+    return st.top();
+}
+
 int main() {
     /*
         Function documentation:
         
-        1. string infixToPostfix(string &infix) 
+        1. string infixToPostfix(string infix) 
             -> Convert an infix expression to postfix using stack
 
-        2. string infixToPrefix(string &infix)
+        2. string infixToPrefix(string infix)
             -> Convert an infix expression to prefix using stack
+
+        3. string postfixToInfix(string postfix)
+            -> Convert a postfix expression to infix using stack
+
+        4. string prefixToInfix(string prefix)
+            -> Convert a prefix expression to infix using stack
     */
 
     file();
@@ -106,9 +150,14 @@ int main() {
     string infix;
     cin >> infix;
 
-    cout << "Postfix: " << infixToPostfix(infix) << endl;
-    cout << "Prefix: " << infixToPrefix(infix) << endl;
+    string postfix = infixToPostfix(infix);
+    string prefix = infixToPrefix(infix);
 
+    cout << "Postfix: " << postfix << endl;
+    cout << "Prefix: " << prefix << endl;
+
+    cout << "Infix from postfix: " << postfixToInfix(postfix) << endl;
+    cout << "Infix from prefix: " << prefixToInfix(prefix) << endl;
 
     return 0;
 }
