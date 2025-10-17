@@ -2,3 +2,5 @@ Postfix: abcd^e-*+
 Prefix: +a*b-^cde
 Infix from postfix: (a+(b*((c^d)-e)))
 Infix from prefix: (a+(b*((c^d)-e)))
+Prefix from postfix: +a*b-^cde
+Postfix from prefix: abcd^e-*+

@@ -121,6 +121,44 @@ string prefixToInfix(string prefix) {
     return st.top();
 }
 
+string postfixToPrefix(string postfix) {
+    stack<string> st;
+
+    for (char c : postfix) {
+        if (isChar(c)) {
+            st.push(string(1, c));
+        } else {
+            string exp2 = st.top();
+            st.pop();
+            string exp1 = st.top();
+            st.pop();
+            exp1 = c + exp1 + exp2;
+            st.push(exp1);
+        }
+    }
+    return st.top(); 
+}
+
+string prefixToPostfix(string prefix) {
+    stack<string> st;
+
+    for (int i = prefix.size() - 1; i >= 0; i--) {
+        char c = prefix[i];
+
+        if (isChar(c)) {
+            st.push(string(1, c));
+        } else {
+            string exp1 = st.top();
+            st.pop();
+            string exp2 = st.top();
+            st.pop();
+            exp1 = exp1 + exp2 + c;
+            st.push(exp1);
+        }
+    }
+    return st.top();
+}
+
 int main() {
     /*
         Function documentation:
@@ -136,6 +174,12 @@ int main() {
 
         4. string prefixToInfix(string prefix)
             -> Convert a prefix expression to infix using stack
+
+        5. string postfixToPrefix(string postfix)
+            -> Convert a postfix expression to prefix using stack
+
+        6. string prefixToPostfix(string prefix)
+            -> Convert a prefix expression to postfix using stack
     */
 
     file();
@@ -158,6 +202,9 @@ int main() {
 
     cout << "Infix from postfix: " << postfixToInfix(postfix) << endl;
     cout << "Infix from prefix: " << prefixToInfix(prefix) << endl;
+
+    cout << "Prefix from postfix: " << postfixToPrefix(postfix) << endl;
+    cout << "Postfix from prefix: " << prefixToPostfix(prefix) << endl;
 
     return 0;
 }
