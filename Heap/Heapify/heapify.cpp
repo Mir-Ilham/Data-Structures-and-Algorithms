@@ -3,6 +3,26 @@ using namespace std;
 
 #define file() freopen("input.txt","r",stdin);freopen("output.txt","w",stdout);
 
+void heapifyRecursive(vector<int> &arr, int n, int i, function<bool(int, int)> compare) {
+    int largest = i;
+    int left = 2*i;
+    int right = 2*i + 1;
+
+    // Check if left child is larger
+    if (left < n && compare(arr[left], arr[largest]))
+        largest = left;
+
+    // Check if right child is larger
+    if (right < n && compare(arr[right], arr[largest]))
+        largest = right;
+
+    // If largest is not the root, swap and continue heapifying
+    if (largest != i) {
+        swap(arr[i], arr[largest]);
+        heapifyRecursive(arr, n, largest, compare);
+    }
+}
+
 void heapify(vector<int> &heap, int i, function<bool(int, int)> compare) {
     int size = heap.size();
     int cur = i;
@@ -32,7 +52,7 @@ int main() {
     file();
 
     /*
-        Problem Description: Implementation the heapify algorithm
+        Problem Description: Implementation of the heapify algorithm
 
         Input:
         The first line of input includes the number of nodes n.

@@ -1,0 +1,2 @@
+Original array: 0 12 5 23 101 76 3 
+Sorted array: 0 3 5 12 23 76 101 
