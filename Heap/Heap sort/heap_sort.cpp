@@ -29,7 +29,7 @@ void heapSort(vector<int> &arr) {
     function<bool(int, int)> compare = [](int a, int b) { return a > b; };
 
     // Step 1: Build max heap
-    for (int i = n / 2 - 1; i > 0; i--)
+    for (int i = n / 2; i > 0; i--)
         heapify(arr, n, i, compare);
 
     // Step 2: Extract elements one by one
